@@ -20,10 +20,12 @@
         <module>rpc-registry</module>
         <module>rpc-demo-provider</module>
         <module>rpc-demo-consumer</module>
+        <module>rpc-config</module>
     </modules>
     <properties>
         <version.netty>4.0.26.Final</version.netty>
         <java.version>1.8</java.version>
+        <guava.version>29.0-jre</guava.version>
     </properties>
     <dependencies>
         <dependency>
@@ -36,6 +38,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
