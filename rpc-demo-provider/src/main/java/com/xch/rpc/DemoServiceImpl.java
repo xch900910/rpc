@@ -18,7 +18,6 @@ package com.xch.rpc;
 
 
 import com.xch.annotation.RpcService;
-import com.xch.context.RpcContext;
 import lombok.extern.slf4j.Slf4j;
 import com.xch.rpc.demo.DemoService;
 
@@ -30,8 +29,8 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        log.info("Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-        return "Hello " + name + ", response from provider: " + RpcContext.getContext().getLocalAddress();
+        log.info("Hello " + name);
+        return "Hello " + name;
     }
 
     @Override

@@ -19,9 +19,9 @@
         <module>rpc-common</module>
         <module>rpc-registry</module>
         <module>rpc-demo-provider</module>
-        <module>rpc-demo-consumer</module>
         <module>rpc-config</module>
         <module>rpc-demo-interface</module>
+        <module>rpc-demo-consumer</module>
     </modules>
     <properties>
         <version.netty>4.0.26.Final</version.netty>
@@ -66,8 +66,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>

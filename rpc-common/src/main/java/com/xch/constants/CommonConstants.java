@@ -17,7 +17,6 @@
 
 package com.xch.constants;
 
-import org.apache.dubbo.common.URL;
 
 import java.net.NetworkInterface;
 import java.util.Properties;
@@ -60,7 +59,6 @@ public interface CommonConstants {
 
     String PROTOCOL_SEPARATOR = "://";
 
-    String PROTOCOL_SEPARATOR_ENCODED = URL.encode(PROTOCOL_SEPARATOR);
 
     String REGISTRY_SEPARATOR = "|";
 

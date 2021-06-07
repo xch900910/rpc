@@ -14,18 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xch.annotation;
+package com.xch.context;
 
 
+import com.xch.annotation.RpcReference;
+import com.xch.annotation.RpcService;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 
 import static com.alibaba.spring.util.AnnotationUtils.getAttribute;
+import static com.xch.util.DubboAnnotationUtils.resolveInterfaceName;
 import static org.springframework.core.annotation.AnnotationUtils.getAnnotationAttributes;
 
-
-
+/**
+ * @since 2.6.5
+ */
 public class ServiceBeanNameBuilder {
 
     private static final String SEPARATOR = ":";
@@ -70,11 +74,11 @@ public class ServiceBeanNameBuilder {
         return new ServiceBeanNameBuilder(interfaceClass, environment);
     }
 
-    public static ServiceBeanNameBuilder create(Service service, Class<?> interfaceClass, Environment environment) {
+    public static ServiceBeanNameBuilder create(RpcService service, Class<?> interfaceClass, Environment environment) {
         return create(getAnnotationAttributes(service, false, false), interfaceClass, environment);
     }
 
-    public static ServiceBeanNameBuilder create(Reference reference, Class<?> interfaceClass, Environment environment) {
+    public static ServiceBeanNameBuilder create(RpcReference reference, Class<?> interfaceClass, Environment environment) {
         return create(getAnnotationAttributes(reference, false, false), interfaceClass, environment);
     }
 

@@ -26,4 +26,9 @@ public @interface RpcService {
      * 服务版本号
      */
     String version() default "";
+
+    /**
+     * Customized parameter key-value pair, for example: {key1, value1, key2, value2}
+     */
+    String[] parameters() default {};
 }

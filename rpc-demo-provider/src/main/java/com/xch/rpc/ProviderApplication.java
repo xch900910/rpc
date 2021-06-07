@@ -19,7 +19,7 @@ public class ProviderApplication {
     }
 
     @Configuration
-    @EnableRpc(scanBasePackages = "rpc")
+    @EnableRpc(scanBasePackages = "com.xch.rpc")
     @PropertySource("classpath:/rpc-provider.properties")
     static class ProviderConfiguration {
 

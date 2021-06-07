@@ -16,7 +16,8 @@
  */
 package com.xch.io;
 
-import org.apache.dubbo.common.utils.IOUtils;
+
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -31,6 +32,7 @@ import java.util.zip.InflaterInputStream;
  */
 
 public class Bytes {
+    private static final int BUFFER_SIZE = 1024 * 8;
     private static final String C64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="; //default base64.
 
     private static final char[] BASE16 = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'}, BASE64 = C64.toCharArray();
@@ -802,7 +804,7 @@ public class Bytes {
         UnsafeByteArrayOutputStream bos = new UnsafeByteArrayOutputStream();
         InputStream is = new InflaterInputStream(bis);
         try {
-            IOUtils.write(is, bos);
+//            IOUtils.write(is, bos,BUFFER_SIZE);
             return bos.toByteArray();
         } finally {
             is.close();
