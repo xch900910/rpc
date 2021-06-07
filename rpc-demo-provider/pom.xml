@@ -10,6 +10,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rpc-demo-provider</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.xch</groupId>
+            <artifactId>rpc-config</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.xch</groupId>
+            <artifactId>rpc-demo-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

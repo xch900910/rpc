@@ -359,7 +359,7 @@ public class ServiceClassPostProcessor implements BeanDefinitionRegistryPostProc
         addPropertyReference(builder, "ref", annotatedServiceBeanName);
         // Set interface
         builder.addPropertyValue("interface", interfaceClass.getName());
-        // Convert parameters into map
+        // Convert parameters into mapAnnotationConfigApplicationContext
         builder.addPropertyValue("parameters", convertParameters(serviceAnnotationAttributes.getStringArray("parameters")));
         // Add methods parameters
         List<MethodConfig> methodConfigs = convertMethodConfigs(serviceAnnotationAttributes.get("methods"));

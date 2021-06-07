@@ -15,7 +15,7 @@ public @interface RpcService {
     /**
      * 提供服务类
      */
-    Class<?> interfaceClass();
+    Class<?> interfaceClass() default void.class;
 
     /**
      * 服务名称
