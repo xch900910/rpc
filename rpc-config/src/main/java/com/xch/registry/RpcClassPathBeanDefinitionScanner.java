@@ -1,4 +1,4 @@
-package com.xch.annotation;
+package com.xch.registry;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;

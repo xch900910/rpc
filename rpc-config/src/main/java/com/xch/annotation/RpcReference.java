@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author: xiongchaohua
- * @Des :
+ * @Des : 服务调用注解
  * @create: 2021-06-07 10:46
  **/
 @Retention(RetentionPolicy.RUNTIME)

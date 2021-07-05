@@ -1,5 +1,6 @@
 package com.xch.annotation;
 
+import com.xch.registry.RpcComponentScanRegistrar;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.AliasFor;
 
@@ -17,12 +18,5 @@ public @interface RpcComponentScan {
 
     String[] basePackages() default {};
 
-    /**
-     * Type-safe alternative to {@link #basePackages()} for specifying the packages to
-     * scan for annotated @Service classes. The package of each class specified will be
-     * scanned.
-     *
-     * @return classes from the base packages to scan
-     */
     Class<?>[] basePackageClasses() default {};
 }

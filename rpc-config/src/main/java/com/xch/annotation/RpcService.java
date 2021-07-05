@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * @author: xiongchaohua
- * @Des :
+ * @Des : 服务提供注解
  * @create: 2021-06-04 18:40
  **/
 @Retention(RetentionPolicy.RUNTIME)

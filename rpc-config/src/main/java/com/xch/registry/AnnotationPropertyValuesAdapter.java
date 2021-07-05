@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xch.annotation;
+package com.xch.registry;
 
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.PropertyValue;
@@ -26,23 +26,11 @@ import java.util.Map;
 
 import static com.alibaba.spring.util.AnnotationUtils.getAttributes;
 
-/**
- * {@link Annotation} {@link PropertyValues} Adapter
- *
- * @see Annotation
- * @see PropertyValues
- * @since 2.5.11
- */
 public class AnnotationPropertyValuesAdapter implements PropertyValues {
 
     private final PropertyValues delegate;
 
-    /**
-     * @param attributes
-     * @param propertyResolver
-     * @param ignoreAttributeNames
-     * @since 2.7.3
-     */
+
     public AnnotationPropertyValuesAdapter(Map<String, Object> attributes, PropertyResolver propertyResolver,
                                            String... ignoreAttributeNames) {
         this.delegate = new MutablePropertyValues(getAttributes(attributes, propertyResolver, ignoreAttributeNames));
