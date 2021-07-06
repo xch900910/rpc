@@ -1,6 +1,5 @@
 package com.xch.annotation;
 
-import com.xch.registry.RpcComponentScanRegistrar;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.AliasFor;
 

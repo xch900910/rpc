@@ -12,8 +12,9 @@ import org.springframework.core.Ordered;
  * @version 1.0
  * @date 2021/6/5 19:31
  */
-public class RpcBootstrapApplicationListener   implements ApplicationListener, ApplicationContextAware,Ordered {
+public class RpcBootstrapApplicationListener implements ApplicationListener, ApplicationContextAware, Ordered {
     public static final String BEAN_NAME = "rpcBootstrapApplicationListener";
+
     @Override
     public int getOrder() {
         return 0;
