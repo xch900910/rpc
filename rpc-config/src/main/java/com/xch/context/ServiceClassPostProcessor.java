@@ -125,7 +125,7 @@ public class ServiceClassPostProcessor implements BeanDefinitionRegistryPostProc
                 }
 
                 if (logger.isInfoEnabled()) {
-                    logger.info(beanDefinitionHolders.size() + " annotated Dubbo's @Service Components { " +
+                    logger.info(beanDefinitionHolders.size() + " annotated  @RpcService Components { " +
                             beanDefinitionHolders +
                             " } were scanned under package[" + packageToScan + "]");
                 }
@@ -133,7 +133,7 @@ public class ServiceClassPostProcessor implements BeanDefinitionRegistryPostProc
             } else {
 
                 if (logger.isWarnEnabled()) {
-                    logger.warn("No Spring Bean annotating Dubbo's @Service was found under package["
+                    logger.warn("No Spring Bean annotating  @RpcService was found under package["
                             + packageToScan + "]");
                 }
 
@@ -202,62 +202,9 @@ public class ServiceClassPostProcessor implements BeanDefinitionRegistryPostProc
 
         String annotatedServiceBeanName = beanDefinitionHolder.getBeanName();
 
-//        AbstractBeanDefinition serviceBeanDefinition =
-//                buildServiceBeanDefinition(service, serviceAnnotationAttributes, interfaceClass, annotatedServiceBeanName);
-
-        // ServiceBean Bean name
-//        String beanName = generateServiceBeanName(serviceAnnotationAttributes, interfaceClass);
-//        if (scanner.checkCandidate(beanName, serviceBeanDefinition)) { // check duplicated candidate bean
-//            registry.registerBeanDefinition(beanName, serviceBeanDefinition);
-//
-//            if (logger.isInfoEnabled()) {
-//                logger.info("The BeanDefinition[" + serviceBeanDefinition +
-//                        "] of ServiceBean has been registered with name : " + beanName);
-//            }
-//
-//        } else {
-//
-//            if (logger.isWarnEnabled()) {
-//                logger.warn("The Duplicated BeanDefinition[" + serviceBeanDefinition +
-//                        "] of ServiceBean[ bean name : " + beanName +
-//                        "] was be found , Did @DubboComponentScan scan to same package in many times?");
-//            }
-//
-//        }
 
     }
 
-//    private String generateServiceBeanName(AnnotationAttributes serviceAnnotationAttributes, Class<?> interfaceClass) {
-////        ServiceBeanNameBuilder builder = create(interfaceClass, environment)
-////                .version(serviceAnnotationAttributes.getString("version"));
-////        return builder.build();
-//    }
-
-//    private AbstractBeanDefinition buildServiceBeanDefinition(Annotation serviceAnnotation,
-//                                                              AnnotationAttributes serviceAnnotationAttributes,
-//                                                              Class<?> interfaceClass,
-//                                                              String annotatedServiceBeanName) {
-//
-////        BeanDefinitionBuilder builder = rootBeanDefinition(ServiceBean.class);
-//
-//        AbstractBeanDefinition beanDefinition = builder.getBeanDefinition();
-//
-//        MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
-//
-//        String[] ignoreAttributeNames = of("application", "module", "registry",
-//                "interface", "interfaceName");
-//
-//        propertyValues.addPropertyValues(new AnnotationPropertyValuesAdapter(serviceAnnotation, environment, ignoreAttributeNames));
-//
-//        // References "ref" property to annotated-@Service Bean
-//        addPropertyReference(builder, "ref", annotatedServiceBeanName);
-//        // Set interface
-//        builder.addPropertyValue("interface", interfaceClass.getName());
-//
-//
-//        return builder.getBeanDefinition();
-//
-//    }
 
     private Class<?> resolveServiceInterfaceClass(AnnotationAttributes attributes, Class<?> defaultInterfaceClass) {
 
@@ -333,47 +280,6 @@ public class ServiceClassPostProcessor implements BeanDefinitionRegistryPostProc
             }
         }
         return resolvedPackagesToScan;
-    }
-
-
-    private ManagedList<RuntimeBeanReference> toRuntimeBeanReferences(String... beanNames) {
-
-        ManagedList<RuntimeBeanReference> runtimeBeanReferences = new ManagedList<>();
-
-        if (!ObjectUtils.isEmpty(beanNames)) {
-
-            for (String beanName : beanNames) {
-
-                String resolvedBeanName = environment.resolvePlaceholders(beanName);
-
-                runtimeBeanReferences.add(new RuntimeBeanReference(resolvedBeanName));
-            }
-
-        }
-
-        return runtimeBeanReferences;
-
-    }
-
-    private void addPropertyReference(BeanDefinitionBuilder builder, String propertyName, String beanName) {
-        String resolvedBeanName = environment.resolvePlaceholders(beanName);
-        builder.addPropertyReference(propertyName, resolvedBeanName);
-    }
-
-    private Map<String, String> convertParameters(String[] parameters) {
-        if (parameters == null || parameters.length == 0) {
-            return null;
-        }
-
-        if (parameters.length % 2 != 0) {
-            throw new IllegalArgumentException("parameter attribute must be paired with key followed by value");
-        }
-
-        Map<String, String> map = new HashMap<>();
-        for (int i = 0; i < parameters.length; i += 2) {
-            map.put(parameters[i], parameters[i + 1]);
-        }
-        return map;
     }
 
     @Override

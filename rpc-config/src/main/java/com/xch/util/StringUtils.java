@@ -44,9 +44,6 @@ public final class StringUtils {
     private static final byte[] HEX2B;
 
 
-    /**
-     * @since 2.7.5
-     */
     public static final char EQUAL_CHAR = '=';
 
     public static final String EQUAL = valueOf(EQUAL_CHAR);
