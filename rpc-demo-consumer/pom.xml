@@ -12,11 +12,7 @@
     <artifactId>rpc-demo-consumer</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.xch</groupId>
-            <artifactId>rpc-config</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>com.xch</groupId>
             <artifactId>rpc-demo-interface</artifactId>

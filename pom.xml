@@ -15,13 +15,11 @@
     <name>rpc</name>
     <description>Demo project for Spring Boot</description>
     <modules>
-        <module>rpc-admin</module>
         <module>rpc-common</module>
-        <module>rpc-registry</module>
         <module>rpc-demo-provider</module>
-        <module>rpc-config</module>
-        <module>rpc-demo-interface</module>
         <module>rpc-demo-consumer</module>
+        <module>rpc-demo-interface</module>
+        <module>rpc-core</module>
     </modules>
     <properties>
         <version.netty>4.0.26.Final</version.netty>

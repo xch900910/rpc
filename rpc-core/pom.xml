@@ -9,14 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>rpc-demo-provider</artifactId>
+    <artifactId>rpc-core</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.xch</groupId>
-            <artifactId>rpc-demo-interface</artifactId>
+            <artifactId>rpc-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
 </project>
