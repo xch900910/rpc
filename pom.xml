@@ -29,6 +29,8 @@
         <javassist_version>3.20.0-GA</javassist_version>
         <commons_io_version>2.6</commons_io_version>
         <fastjson.version>1.2.47</fastjson.version>
+        <netty-version>4.1.50.Final</netty-version>
+        <consul.version>1.4.1</consul.version>
     </properties>
     <dependencies>
         <dependency>
