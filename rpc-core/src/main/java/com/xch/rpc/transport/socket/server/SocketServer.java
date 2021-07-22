@@ -7,7 +7,9 @@ import com.xch.rpc.serializer.CommonSerializer;
 import com.xch.rpc.transport.AbstractRpcServer;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -37,7 +39,14 @@ public class SocketServer extends AbstractRpcServer {
     @Override
     public void start() {
         try (ServerSocket serverSocket = new ServerSocket();) {
-
+            serverSocket.bind(new InetSocketAddress(this.host, this.port));
+            logger.info("服务器启动……");
+            Socket socket;
+            while ((socket = serverSocket.accept()) != null) {
+                logger.info("消费者连接: {}:{}", socket.getInetAddress(), socket.getPort());
+                threadPool.execute(new SocketRequestHandlerThread(socket, requestHandler, serializer));
+            }
+            threadPool.shutdown();
         } catch (IOException e) {
             logger.error("服务器启动时有错误发生:", e);
         }
