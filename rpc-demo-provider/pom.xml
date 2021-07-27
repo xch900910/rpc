@@ -16,6 +16,11 @@
             <artifactId>rpc-demo-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.xch</groupId>
+            <artifactId>rpc-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

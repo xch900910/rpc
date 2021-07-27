@@ -1,7 +1,11 @@
 package com.xch.rpc.transport.socket.server;
 
+import com.xch.rpc.entity.RpcRequest;
+import com.xch.rpc.entity.RpcResponse;
 import com.xch.rpc.handler.RequestHandler;
 import com.xch.rpc.serializer.CommonSerializer;
+import com.xch.rpc.util.ObjectReader;
+import com.xch.rpc.util.ObjectWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +35,10 @@ public class SocketRequestHandlerThread implements Runnable {
     public void run() {
         try (InputStream inputStream = socket.getInputStream();
              OutputStream outputStream = socket.getOutputStream()) {
-
+            RpcRequest rpcRequest = (RpcRequest) ObjectReader.readObject(inputStream);
+            Object result = requestHandler.handle(rpcRequest);
+            RpcResponse<Object> response = RpcResponse.success(result, rpcRequest.getRequestId());
+            ObjectWriter.writeObject(outputStream, response, serializer);
         } catch (IOException e) {
             logger.error("调用或发送时有错误发生：", e);
         }
