@@ -31,10 +31,10 @@ public class ConsulUtil {
         newService.setId(serviceName);
         newService.setName(serviceName);
         newService.setTags(Arrays.asList("EU-West", "EU-East"));
-        newService.setPort(8080);
+        newService.setPort(SERVER_PORT);
 
         NewService.Check serviceCheck = new NewService.Check();
-        serviceCheck.setHttp("http://127.0.0.1:8080/health");
+        serviceCheck.setHttp("http://127.0.0.1:8500/health");
         serviceCheck.setInterval("10s");
         newService.setCheck(serviceCheck);
         client.agentServiceRegister(newService);

@@ -2,6 +2,7 @@ package com.xch.rpc.transport;
 
 import com.xch.rpc.entity.RpcRequest;
 import com.xch.rpc.entity.RpcResponse;
+import com.xch.rpc.transport.socket.client.SocketClient;
 import com.xch.rpc.util.RpcMessageChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,9 +50,9 @@ public class RpcClientProxy implements InvocationHandler {
 //                return null;
 //            }
 //        }
-//        if (client instanceof SocketClient) {
-//            rpcResponse = (RpcResponse) client.sendRequest(rpcRequest);
-//        }
+        if (client instanceof SocketClient) {
+            rpcResponse = (RpcResponse) client.sendRequest(rpcRequest);
+        }
         RpcMessageChecker.check(rpcRequest, rpcResponse);
         return rpcResponse.getData();
     }

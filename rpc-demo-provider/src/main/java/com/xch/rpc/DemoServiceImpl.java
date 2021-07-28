@@ -1,5 +1,6 @@
 package com.xch.rpc;
 
+import com.xch.rpc.annotation.Service;
 import com.xch.rpc.demo.DemoService;
 
 /**
@@ -7,6 +8,7 @@ import com.xch.rpc.demo.DemoService;
  * @version 1.0
  * @date 2021/7/28 6:40
  */
+@Service
 public class DemoServiceImpl implements DemoService {
     @Override
     public String sayHello(String name) {
