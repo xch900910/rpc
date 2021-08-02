@@ -32,7 +32,7 @@ public class ConsulUtil {
         newService.setId(serviceName);
         newService.setName(serviceName);
         newService.setTags(Arrays.asList("EU-West", "EU-East"));
-        newService.setPort(9999);
+        newService.setPort(address.getPort());
 
 //        NewService.Check serviceCheck = new NewService.Check();
 //        serviceCheck.setHttp("http://127.0.0.1:8500/health");
