@@ -63,9 +63,10 @@ public class SocketClient implements RpcClient {
         }
         InetSocketAddress inetSocketAddress = serviceDiscovery.lookupService(rpcRequest.getInterfaceName());
         try (Socket socket = new Socket();
-             OutputStream outputStream = socket.getOutputStream();
-             InputStream inputStream = socket.getInputStream();) {
+        ) {
             socket.connect(inetSocketAddress);
+            OutputStream outputStream = socket.getOutputStream();
+            InputStream inputStream = socket.getInputStream();
             ObjectWriter.writeObject(outputStream, rpcRequest, serializer);
             Object obj = ObjectReader.readObject(inputStream);
             RpcResponse rpcResponse = (RpcResponse) obj;

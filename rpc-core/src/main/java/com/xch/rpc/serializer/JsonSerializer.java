@@ -34,8 +34,8 @@ public class JsonSerializer implements CommonSerializer {
             Object obj = objectMapper.readValue(bytes, clazz);
             return obj;
         } catch (IOException e) {
-            logger.error("序列化时有错误发生:", e);
-            throw new SerializeException("序列化时有错误发生");
+            logger.error("反序列化时有错误发生:", e);
+            throw new SerializeException("反序列化时有错误发生");
         }
     }
 

@@ -4,6 +4,7 @@ import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.QueryParams;
 import com.ecwid.consul.v1.Response;
 import com.ecwid.consul.v1.agent.model.NewService;
+import com.ecwid.consul.v1.health.HealthServicesRequest;
 import com.ecwid.consul.v1.health.model.HealthService;
 
 import java.net.InetSocketAddress;
@@ -31,18 +32,23 @@ public class ConsulUtil {
         newService.setId(serviceName);
         newService.setName(serviceName);
         newService.setTags(Arrays.asList("EU-West", "EU-East"));
-        newService.setPort(SERVER_PORT);
+        newService.setPort(9999);
 
-        NewService.Check serviceCheck = new NewService.Check();
-        serviceCheck.setHttp("http://127.0.0.1:8500/health");
-        serviceCheck.setInterval("10s");
-        newService.setCheck(serviceCheck);
+//        NewService.Check serviceCheck = new NewService.Check();
+//        serviceCheck.setHttp("http://127.0.0.1:8500/health");
+//        serviceCheck.setInterval("10s");
+//        newService.setCheck(serviceCheck);
         client.agentServiceRegister(newService);
     }
 
     public static List<HealthService> findHealthService(String serviceName) {
+        // query for healthy services based on name (returns myapp_01 and myapp_02 if healthy)
+        HealthServicesRequest request = HealthServicesRequest.newBuilder()
+                .setPassing(true)
+                .setQueryParams(QueryParams.DEFAULT)
+                .build();
         Response<List<HealthService>> healthyServices = client.getHealthServices(serviceName,
-                true, QueryParams.DEFAULT);
+                request);
         return healthyServices.getValue();
     }
 

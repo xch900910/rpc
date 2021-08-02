@@ -2,6 +2,7 @@ package com.xch.rpc.transport.socket.server;
 
 import com.xch.rpc.factory.ThreadPoolFactory;
 import com.xch.rpc.handler.RequestHandler;
+import com.xch.rpc.provider.ServiceProviderImpl;
 import com.xch.rpc.registry.ConsulServiceRegistry;
 import com.xch.rpc.serializer.CommonSerializer;
 import com.xch.rpc.transport.AbstractRpcServer;
@@ -32,6 +33,7 @@ public class SocketServer extends AbstractRpcServer {
         threadPool = ThreadPoolFactory.createDefaultThreadPool("socket-rpc-server");
         this.serializer = CommonSerializer.getByCode(serializer);
         this.serviceRegistry = new ConsulServiceRegistry();
+        this.serviceProvider = new ServiceProviderImpl();
         scanServices();
 
     }

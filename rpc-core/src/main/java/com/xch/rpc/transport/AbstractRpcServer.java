@@ -4,6 +4,7 @@ import com.xch.rpc.annotation.Service;
 import com.xch.rpc.annotation.ServiceScan;
 import com.xch.rpc.enumeration.RpcError;
 import com.xch.rpc.exception.RpcException;
+import com.xch.rpc.provider.ServiceProvider;
 import com.xch.rpc.registry.ServiceRegistry;
 import com.xch.rpc.util.ReflectUtil;
 import io.netty.util.internal.StringUtil;
@@ -25,6 +26,7 @@ public abstract class AbstractRpcServer implements RpcServer {
     protected int port;
 
     protected ServiceRegistry serviceRegistry;
+    protected ServiceProvider serviceProvider;
 
     public void scanServices() {
         String mainClassName = ReflectUtil.getStackTrace();
@@ -71,6 +73,7 @@ public abstract class AbstractRpcServer implements RpcServer {
 
     @Override
     public <T> void publishService(T service, String serviceName) {
+        serviceProvider.addServiceProvider(service, serviceName);
         serviceRegistry.register(serviceName, new InetSocketAddress(host, port));
     }
 }
